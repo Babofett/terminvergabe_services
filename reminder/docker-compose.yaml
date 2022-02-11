@@ -1,0 +1,5 @@
+services:
+  reminders-service:
+    build:
+      dockerfile: Dockerfile
+    restart: always

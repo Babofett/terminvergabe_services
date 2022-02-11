@@ -1,0 +1,22 @@
+services:
+  users-db:
+    image: mongo:latest
+    hostname: users-db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - "${USERS_DB_PORT}:27017"
+    volumes:
+      - users_data_container:/data/db
+
+  users-service:
+    build:
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "6000:6000"
+
+volumes:
+  users_data_container:

@@ -1,0 +1,36 @@
+services:
+  appointments-service:
+    build: ./appointments
+    ports:
+      - "4000:4000"
+
+  bookings-service:
+    build: ./bookings
+    ports:
+      - "4500:4500"
+  merchants_preview-service:
+    build: ./merchants_preview
+    ports:
+      - "3000:3000"
+
+  merchants-service:
+    build: ./merchants
+    restart: always
+    ports:
+      - "5000:5000"
+
+  users-service:
+    build: ./users
+    restart: always
+    ports:
+      - "6000:6000"
+
+  reminders-service:
+    build: ./reminder
+    restart: always
+    depends_on: [users-service, merchants-service]
+    env_file: './reminder/compose.env'
+
+volumes:
+  merchants_data_container:
+  users_data_container:

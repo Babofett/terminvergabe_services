@@ -1,0 +1,5 @@
+/venv
+.idea
+lib/constants.dart
+.ipynb_checkpoints
+Untitled.ipynb
